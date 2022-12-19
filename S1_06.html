@@ -1,0 +1,22 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(arr) {
+        const answer = [];
+        const odds = arr.filter((item) => item % 2 !== 0);
+
+        answer.push(odds.reduce((acc, cur, _) => acc + cur, 0));
+        answer.push(Math.min(...odds));
+
+        return answer;
+      }
+
+      const arr = [12, 77, 38, 41, 53, 92, 85];
+      console.log(solution(arr));
+    </script>
+  </body>
+</html>

@@ -1,0 +1,29 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(arr) {
+        const answer = [];
+
+        const targetSum = arr.reduce((acc, cur, _) => acc + cur, 0) - 100;
+        console.log(targetSum);
+
+        for (let i = 0; i < arr.length; i++) {
+          const targetIdx = arr.indexOf(targetSum - arr[i]);
+          console.log(i, targetIdx);
+          if (targetIdx !== -1 && targetIdx !== i) {
+            answer.push(arr.filter((_item, idx) => idx !== targetIdx && idx !== i));
+          }
+        }
+
+        return answer;
+      }
+
+      let arr = [20, 7, 23, 19, 10, 15, 25, 8, 13];
+      console.log(solution(arr));
+    </script>
+  </body>
+</html>
