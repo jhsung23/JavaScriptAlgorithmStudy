@@ -7,6 +7,9 @@
     <script>
       function solution(s, t) {
         return s.match(new RegExp(`${t}`, 'g')).length;
+
+        // # split을 활용한 문자 개수 찾기
+        // return s.split(t).length - 1;
       }
 
       let str = 'COMPUTERPROGRAMMING';
