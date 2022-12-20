@@ -9,11 +9,10 @@
         const answer = [];
 
         const targetSum = arr.reduce((acc, cur, _) => acc + cur, 0) - 100;
-        console.log(targetSum);
 
         for (let i = 0; i < arr.length; i++) {
           const targetIdx = arr.indexOf(targetSum - arr[i]);
-          console.log(i, targetIdx);
+
           if (targetIdx !== -1 && targetIdx !== i) {
             answer.push(arr.filter((_item, idx) => idx !== targetIdx && idx !== i));
           }
