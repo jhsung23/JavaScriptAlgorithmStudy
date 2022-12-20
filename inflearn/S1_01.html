@@ -5,6 +5,12 @@
   </head>
   <body>
     <script>
+      /*
+      
+      # Math.min 또는 Math.max 내장함수를 쓸 때, 인자로 배열 객체를 넘기면 안됨
+        -> spread 연산자로 배열을 펼쳐 넣어줘야 한다.
+        
+      */
       function solution(a, b, c) {
         return Math.min(a, b, c);
       }
