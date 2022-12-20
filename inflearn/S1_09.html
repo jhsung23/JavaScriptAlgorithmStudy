@@ -6,7 +6,8 @@
   <body>
     <script>
       function solution(s) {
-        return s.replaceAll('A', '#');
+        // return s.replaceAll('A', '#'); // 1. replaceAll 메서드는 brower 환경에서만 사용 가능
+        return s.replace(/A/g, '#'); // 2. replace와 정규식을 활용하면 node 환경에서도 사용 가능
       }
 
       let str = 'BANANA';
