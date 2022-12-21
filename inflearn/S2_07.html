@@ -19,7 +19,10 @@
               let y = j + dy[k];
 
               if (x >= 0 && x < arr.length && y >= 0 && y < arr.length) {
-                if (arr[i][j] <= arr[x][y]) flag = false;
+                if (arr[i][j] <= arr[x][y]) {
+                  flag = false;
+                  break;
+                }
               }
             }
             if (flag) answer += 1;
