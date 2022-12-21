@@ -6,12 +6,15 @@
   <body>
     <script>
       function solution(arr) {
+        // # 배열을 특정 값으로 초기화하기
+        // Array.from({length: 배열 길이}, () => 초기화값)
+
         const answer = [];
 
         for (let i = 0; i < arr.length; i++) {
           let count = 1;
           for (let j = 0; j < arr.length; j++) {
-            if (j === i) continue;
+            // if (j === i) continue; 없어도 됨
             if (arr[j] > arr[i]) count += 1;
           }
           answer.push(count);
