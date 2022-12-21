@@ -1,0 +1,62 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      const getMaxSumOfRow = () => {
+        let res = 0;
+
+        for (let row of arr) {
+          let tmpRes = row.reduce((acc, cur) => acc + cur);
+          res = res < tmpRes ? tmpRes : res;
+        }
+
+        return res;
+      };
+
+      const getMaxSumOfCol = () => {
+        let res = 0;
+
+        for (let i = 0; i < arr.length; i++) {
+          let tmpRes = 0;
+          for (let j = 0; j < arr.length; j++) {
+            tmpRes += arr[j][i];
+          }
+          res = res < tmpRes ? tmpRes : res;
+        }
+
+        return res;
+      };
+
+      const getMaxSumOfDiag = () => {
+        let tmpRes1 = 0,
+          tmpRes2 = 0;
+
+        for (let i = 0; i < arr.length; i++) {
+          tmpRes1 += arr[i][i];
+        }
+
+        for (let i = 0; i < arr.length; i++) {
+          tmpRes2 += arr[i][4 - i];
+        }
+
+        return tmpRes1 > tmpRes2 ? tmpRes1 : tmpRes2;
+      };
+
+      function solution(arr) {
+        return Math.max(getMaxSumOfRow(), getMaxSumOfCol(), getMaxSumOfDiag());
+      }
+
+      let arr = [
+        [10, 13, 10, 12, 15],
+        [12, 39, 30, 23, 11],
+        [11, 25, 50, 53, 15],
+        [19, 27, 29, 37, 27],
+        [19, 13, 30, 13, 19],
+      ];
+      console.log(solution(arr));
+    </script>
+  </body>
+</html>
