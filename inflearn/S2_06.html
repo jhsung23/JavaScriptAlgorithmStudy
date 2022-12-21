@@ -5,26 +5,19 @@
   </head>
   <body>
     <script>
-      const getMaxSumOfRow = () => {
-        let res = 0;
-
-        for (let row of arr) {
-          let tmpRes = row.reduce((acc, cur) => acc + cur);
-          res = res < tmpRes ? tmpRes : res;
-        }
-
-        return res;
-      };
-
-      const getMaxSumOfCol = () => {
+      const getMaxSumOfStraight = () => {
         let res = 0;
 
         for (let i = 0; i < arr.length; i++) {
-          let tmpRes = 0;
+          let colSum = 0,
+            rowSum = 0;
+
           for (let j = 0; j < arr.length; j++) {
-            tmpRes += arr[j][i];
+            colSum += arr[j][i];
+            rowSum += arr[i][j];
           }
-          res = res < tmpRes ? tmpRes : res;
+
+          res = Math.max(res, colSum, rowSum);
         }
 
         return res;
@@ -36,17 +29,14 @@
 
         for (let i = 0; i < arr.length; i++) {
           tmpRes1 += arr[i][i];
-        }
-
-        for (let i = 0; i < arr.length; i++) {
           tmpRes2 += arr[i][4 - i];
         }
 
-        return tmpRes1 > tmpRes2 ? tmpRes1 : tmpRes2;
+        return Math.max(tmpRes1, tmpRes2);
       };
 
       function solution(arr) {
-        return Math.max(getMaxSumOfRow(), getMaxSumOfCol(), getMaxSumOfDiag());
+        return Math.max(getMaxSumOfStraight(), getMaxSumOfDiag());
       }
 
       let arr = [
