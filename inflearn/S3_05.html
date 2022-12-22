@@ -1,0 +1,25 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(s) {
+        const tokens = s.match(/([A-z])\1*/g);
+
+        return tokens
+          .map((token) => {
+            if (token.length !== 1) {
+              return token[0] + token.length;
+            }
+            return token;
+          })
+          .join('');
+      }
+
+      let str = 'KKHSSSSSSSE';
+      console.log(solution(str));
+    </script>
+  </body>
+</html>
