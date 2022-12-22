@@ -6,8 +6,10 @@
   <body>
     <script>
       function solution(s) {
+        s = s.toUpperCase();
+
         for (let i = 0; i < s.length / 2; i++) {
-          if (s[i].toUpperCase() !== s[s.length - i - 1].toUpperCase()) return 'NO';
+          if (s[i] !== s[s.length - i - 1]) return 'NO';
         }
 
         return 'YES';
