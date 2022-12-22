@@ -1,0 +1,37 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(s, t) {
+        const answer = [];
+
+        for (let i = 0; i < s.length; i++) {
+          if (s[i] === t) {
+            answer.push(0);
+            continue;
+          }
+
+          let count = 1;
+          while (i + count < s.length || i - count >= 0) {
+            if (
+              (i + count < s.length && s[i + count] === t) ||
+              (i - count >= 0 && s[i - count] === t)
+            ) {
+              answer.push(count);
+              break;
+            }
+            count += 1;
+          }
+        }
+
+        return answer;
+      }
+
+      let str = 'teachermode';
+      console.log(solution(str, 'e'));
+    </script>
+  </body>
+</html>
