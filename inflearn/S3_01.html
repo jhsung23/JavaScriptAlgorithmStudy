@@ -1,0 +1,20 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(s) {
+        for (let i = 0; i < s.length / 2; i++) {
+          if (s[i].toUpperCase() !== s[s.length - i - 1].toUpperCase()) return 'NO';
+        }
+
+        return 'YES';
+      }
+
+      let str = 'goooG';
+      console.log(solution(str));
+    </script>
+  </body>
+</html>
