@@ -1,0 +1,22 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(s) {
+        const str = s.match(/([A-z])+/g).join('');
+
+        for (let i = 0; i < str.length / 2; i++) {
+          if (str[i].toUpperCase() !== str[str.length - i - 1].toUpperCase()) return 'NO';
+        }
+
+        return 'YES';
+      }
+
+      let str = 'found7, time: study; Yduts; emit, 7Dnuof';
+      console.log(solution(str));
+    </script>
+  </body>
+</html>
