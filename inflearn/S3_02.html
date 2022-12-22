@@ -6,10 +6,14 @@
   <body>
     <script>
       function solution(s) {
-        const str = s
-          .match(/([A-z])+/g)
-          .join('')
-          .toUpperCase();
+        // const str = s
+        //   .match(/([A-z])+/g)
+        //   .join('')
+        //   .toUpperCase();
+
+        // # replace 메서드 활용
+        // -> [^a-z] : a-z가 아닌(^) 문자를 모두 고른다
+        const str = s.toUpperCase().replace(/[^a-z]/g, '');
 
         for (let i = 0; i < str.length / 2; i++) {
           if (str[i] !== str[str.length - i - 1]) return 'NO';
