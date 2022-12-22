@@ -1,0 +1,17 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(str) {
+        const numStr = str.match(/[0-9]/g).join('');
+        return Number(numStr);
+      }
+
+      let str = 'g0en2T0s8eSoft';
+      console.log(solution(str));
+    </script>
+  </body>
+</html>
