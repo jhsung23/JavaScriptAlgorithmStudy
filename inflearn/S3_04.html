@@ -8,23 +8,46 @@
       function solution(s, t) {
         const answer = [];
 
-        for (let i = 0; i < s.length; i++) {
-          if (s[i] === t) {
-            answer.push(0);
-            continue;
-          }
+        // for (let i = 0; i < s.length; i++) {
+        //   if (s[i] === t) {
+        //     answer.push(0);
+        //     continue;
+        //   }
 
-          let count = 1;
-          while (i + count < s.length || i - count >= 0) {
-            if (
-              (i + count < s.length && s[i + count] === t) ||
-              (i - count >= 0 && s[i - count] === t)
-            ) {
-              answer.push(count);
-              break;
-            }
+        //   let count = 1;
+        //   while (i + count < s.length || i - count >= 0) {
+        //     if (
+        //       (i + count < s.length && s[i + count] === t) ||
+        //       (i - count >= 0 && s[i - count] === t)
+        //     ) {
+        //       answer.push(count);
+        //       break;
+        //     }
+        //     count += 1;
+        //   }
+        // }
+
+        // # 시간 복잡도 O(n)으로 푸는 방법
+        let count = Number.MAX_SAFE_INTEGER;
+
+        for (let char of s) {
+          if (char === t) count = 0;
+          else {
             count += 1;
           }
+
+          answer.push(count);
+        }
+
+        count = Number.MAX_SAFE_INTEGER;
+
+        for (let i = s.length - 1; i >= 0; i--) {
+          if (s[i] === t) count = 0;
+          else {
+            count += 1;
+          }
+
+          answer[i] = Math.min(answer[i], count);
         }
 
         return answer;
