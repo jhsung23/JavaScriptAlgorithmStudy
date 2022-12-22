@@ -6,10 +6,13 @@
   <body>
     <script>
       function solution(s) {
-        const str = s.match(/([A-z])+/g).join('');
+        const str = s
+          .match(/([A-z])+/g)
+          .join('')
+          .toUpperCase();
 
         for (let i = 0; i < str.length / 2; i++) {
-          if (str[i].toUpperCase() !== str[str.length - i - 1].toUpperCase()) return 'NO';
+          if (str[i] !== str[str.length - i - 1]) return 'NO';
         }
 
         return 'YES';
