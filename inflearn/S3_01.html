@@ -8,9 +8,12 @@
       function solution(s) {
         s = s.toUpperCase();
 
-        for (let i = 0; i < s.length / 2; i++) {
-          if (s[i] !== s[s.length - i - 1]) return 'NO';
-        }
+        // for (let i = 0; i < s.length / 2; i++) {
+        //   if (s[i] !== s[s.length - i - 1]) return 'NO';
+        // }
+
+        // # reverse 메서드를 활용한 풀이
+        if (s !== s.split('').reverse().join('')) return 'NO';
 
         return 'YES';
       }
