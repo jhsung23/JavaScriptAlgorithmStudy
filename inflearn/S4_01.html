@@ -1,0 +1,33 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(n, arr) {
+        const sumArr = arr.map((number) => {
+          return number
+            .toString()
+            .split('')
+            .reduce((acc, cur) => acc + Number(cur), 0);
+        });
+
+        let maxNumberIdx = 0,
+          maxNumber = sumArr[0];
+
+        for (let i = 1; i < arr.length; i++) {
+          if (maxNumber < sumArr[i] || (maxNumber === sumArr[i] && arr[maxNumberIdx] < arr[i])) {
+            maxNumber = sumArr[i];
+            maxNumberIdx = i;
+          }
+        }
+
+        return arr[maxNumberIdx];
+      }
+
+      let arr = [128, 460, 603, 40, 521, 137, 123];
+      console.log(solution(7, arr));
+    </script>
+  </body>
+</html>
