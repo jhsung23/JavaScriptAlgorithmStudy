@@ -1,0 +1,41 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function hasEqaulElement(map1, map2) {
+        for (let pair of map1) {
+          if (!map2.has(pair[0]) || pair[1] !== map2.get(pair[0])) return false;
+        }
+        return true;
+      }
+
+      function solution(str1, str2) {
+        const map1 = new Map();
+        const map2 = new Map();
+
+        for (let char of str1) {
+          if (map1.has(char)) map1.set(char, map1.get(char) + 1);
+          else map1.set(char, 1);
+        }
+
+        for (let char of str2) {
+          if (map2.has(char)) map2.set(char, map2.get(char) + 1);
+          else map2.set(char, 1);
+        }
+
+        if (map1.size === map2.size && hasEqaulElement(map1, map2)) return 'YES';
+        else return 'NO';
+      }
+
+      //   let a = 'AbaAeCe';
+      //   let b = 'baeeACA';
+
+      let a = 'abaCC';
+      let b = 'Caaab';
+      console.log(solution(a, b));
+    </script>
+  </body>
+</html>
