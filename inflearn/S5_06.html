@@ -1,0 +1,23 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(s) {
+        const map = new Map();
+
+        for (let candidate of s) {
+          if (map.has(candidate)) map.set(candidate, map.get(candidate) + 1);
+          else map.set(candidate, 1);
+        }
+
+        return [...map].sort((a, b) => b[1] - a[1]).at(0)[0];
+      }
+
+      let str = 'BACBACCACCBDEDE';
+      console.log(solution(str));
+    </script>
+  </body>
+</html>
