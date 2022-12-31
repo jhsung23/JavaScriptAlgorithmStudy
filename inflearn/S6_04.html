@@ -1,0 +1,38 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(s) {
+        const stack = [];
+
+        for (let char of s) {
+          if (!isNaN(char)) {
+            stack.push(char);
+          } else {
+            const num2 = Number(stack.pop());
+            const num1 = Number(stack.pop());
+
+            if (char === '+') {
+              stack.push(num1 + num2);
+            } else if (char === '-') {
+              stack.push(num1 - num2);
+            } else if (char === '*') {
+              stack.push(num1 * num2);
+            } else if (char === '/') {
+              stack.push(num1 / num2);
+            }
+          }
+          console.log(stack);
+        }
+
+        return stack[0];
+      }
+
+      let str = '352+*9-';
+      console.log(solution(str));
+    </script>
+  </body>
+</html>
