@@ -1,0 +1,28 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(s) {
+        const stack = [];
+
+        for (let char of s) {
+          if (char !== ')') stack.push(char);
+          else {
+            while (stack[stack.length - 1] !== '(') {
+              stack.pop();
+            }
+            stack.pop();
+          }
+        }
+
+        return stack.join('');
+      }
+
+      let str = '(A(BC)D)EF(G(H)(IJ)K)LM(N)';
+      console.log(solution(str));
+    </script>
+  </body>
+</html>
