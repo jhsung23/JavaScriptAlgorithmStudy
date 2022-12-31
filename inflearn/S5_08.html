@@ -1,0 +1,62 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function hasEqaulElement(map1, map2) {
+        if (map1.size !== map2.size) return false;
+
+        for (let pair of map1) {
+          if (!map2.has(pair[0]) || pair[1] !== map2.get(pair[0])) return false;
+        }
+
+        return true;
+      }
+
+      function solution(s, t) {
+        let answer = 0;
+        const sMap = new Map();
+        const tMap = new Map();
+
+        for (let char of t) {
+          if (tMap.has(char)) tMap.set(char, tMap.get(char) + 1);
+          else tMap.set(char, 1);
+        }
+
+        for (let i = 0; i < s.length; i++) {
+          if (i < t.length) {
+            if (sMap.has(s[i])) {
+              sMap.set(s[i], sMap.get(s[i]) + 1);
+            } else {
+              sMap.set(s[i], 1);
+            }
+          } else {
+            if (s[i] !== s[i - t.length]) {
+              if (sMap.has(s[i])) {
+                sMap.set(s[i], sMap.get(s[i]) + 1);
+              } else {
+                sMap.set(s[i], 1);
+              }
+
+              if (sMap.get(s[i - t.length]) > 1) {
+                sMap.set(s[i - t.length], sMap.get(s[i - t.length]) - 1);
+              } else sMap.delete(s[i - t.length]);
+            }
+          }
+
+          if (i - 1 >= t.length && hasEqaulElement(sMap, tMap)) {
+            answer += 1;
+          }
+        }
+
+        return answer;
+      }
+
+      let a = 'bacaAacba';
+      let b = 'abc';
+      console.log(solution(a, b));
+    </script>
+  </body>
+</html>
