@@ -10,20 +10,31 @@
           sum = 0,
           answer = 0;
 
-        for (let element of arr) {
-          if (element <= m) answer += 1;
-        }
+        // for (let element of arr) {
+        //   if (element <= m) answer += 1;
+        // }
 
+        // for (let q = 0; q < arr.length; q++) {
+        //   sum += arr[q];
+
+        //   if (sum <= m) answer += 1;
+
+        //   while (sum > m) {
+        //     sum -= arr[p++];
+
+        //     if (sum <= m) answer += 1;
+        //   }
+        // }
+
+        // 하나의 for문으로 구하는 풀이
         for (let q = 0; q < arr.length; q++) {
           sum += arr[q];
 
-          if (sum <= m) answer += 1;
-
           while (sum > m) {
             sum -= arr[p++];
-
-            if (sum <= m) answer += 1;
           }
+
+          if (sum <= m) answer += q - p + 1;
         }
 
         return answer;
