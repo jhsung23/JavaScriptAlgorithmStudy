@@ -9,13 +9,9 @@
         const stack = [];
 
         for (let char of s) {
-          if (char !== ')') stack.push(char);
-          else {
-            while (stack[stack.length - 1] !== '(') {
-              stack.pop();
-            }
-            stack.pop();
-          }
+          if (char === ')') {
+            while (stack.pop() !== '(');
+          } else stack.push(char);
         }
 
         return stack.join('');
