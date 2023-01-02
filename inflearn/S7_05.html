@@ -1,0 +1,28 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(size, arr) {
+        const queue = [];
+
+        for (let task of arr) {
+          if (queue.includes(task)) {
+            queue.splice(queue.indexOf(task), 1);
+            queue.unshift(task);
+          } else {
+            if (queue.length >= size) queue.pop();
+            queue.unshift(task);
+          }
+        }
+
+        return queue;
+      }
+
+      let arr = [1, 2, 3, 2, 6, 2, 3, 5, 7];
+      console.log(solution(5, arr));
+    </script>
+  </body>
+</html>
