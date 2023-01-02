@@ -1,0 +1,33 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(s) {
+        let answer = 0;
+        const stack = [];
+
+        for (let i = 0; i < s.length - 1; i++) {
+          if (s[i] === '(' && s[i + 1] === ')') {
+            for (let j = 0; j < stack.length; j++) {
+              stack[j][1] += 1;
+            }
+          } else if (s[i] === '(' && s[i + 1] === '(') {
+            stack.push(['(', 1]);
+          } else if (s[i] === ')' && s[i + 1] === ')') {
+            answer += stack.pop()[1];
+          }
+        }
+
+        return answer;
+      }
+
+      let a = '()(((()())(())()))(())';
+      let b = '(((()(()()))(())()))(()())';
+      console.log(solution(a));
+      console.log(solution(b));
+    </script>
+  </body>
+</html>
