@@ -8,8 +8,8 @@
       function hasEqaulElement(map1, map2) {
         if (map1.size !== map2.size) return false;
 
-        for (let pair of map1) {
-          if (!map2.has(pair[0]) || pair[1] !== map2.get(pair[0])) return false;
+        for (let [key, value] of map1) {
+          if (!map2.has(key) || value !== map2.get(key)) return false;
         }
 
         return true;
