@@ -1,0 +1,26 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(need, plan) {
+        const subjectOrder = need.split('');
+        const target = [];
+
+        for (let subject of plan) {
+          if (subjectOrder.includes(subject)) {
+            target.push(subject);
+          }
+        }
+
+        return target.join('') === need ? 'YES' : 'NO';
+      }
+
+      let a = 'CBA';
+      let b = 'CBDAGE';
+      console.log(solution(a, b));
+    </script>
+  </body>
+</html>
