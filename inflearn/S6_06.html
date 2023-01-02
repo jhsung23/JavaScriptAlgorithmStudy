@@ -1,0 +1,32 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(n, k) {
+        const queue = [];
+
+        for (let i = 1; i <= n; i++) {
+          queue.push(i);
+        }
+
+        while (queue.length > 1) {
+          let count = k;
+
+          do {
+            queue.push(queue.shift());
+            count -= 1;
+          } while (count > 1);
+
+          queue.shift();
+        }
+
+        return queue[0];
+      }
+
+      console.log(solution(8, 3));
+    </script>
+  </body>
+</html>
