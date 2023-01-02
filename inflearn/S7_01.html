@@ -1,0 +1,35 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(arr) {
+        // 선택 정렬
+        // 배열의 요소 중 가장 작은 수를 맨 앞 원소와 교환하며 정렬해 나가는 것
+
+        for (let i = 0; i < arr.length; i++) {
+          let minNumber = Number.MAX_SAFE_INTEGER;
+          let minNumberIndex;
+
+          for (let j = i; j < arr.length; j++) {
+            if (minNumber > arr[j]) {
+              minNumber = arr[j];
+              minNumberIndex = j;
+            }
+          }
+
+          const tmp = arr[i];
+          arr[i] = arr[minNumberIndex];
+          arr[minNumberIndex] = tmp;
+        }
+
+        return arr;
+      }
+
+      let arr = [13, 5, 11, 7, 23, 15];
+      console.log(solution(arr));
+    </script>
+  </body>
+</html>
