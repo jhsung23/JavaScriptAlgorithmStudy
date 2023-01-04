@@ -6,15 +6,27 @@
   <body>
     <script>
       function solution(arr) {
-        const negative = [];
-        const positive = [];
+        // const negative = [];
+        // const positive = [];
 
-        for (let number of arr) {
-          if (number < 0) negative.push(number);
-          else positive.push(number);
+        // for (let number of arr) {
+        //   if (number < 0) negative.push(number);
+        //   else positive.push(number);
+        // }
+
+        // return negative.concat(positive);
+
+        // 정렬 방식을 활용한 풀이
+        // 음수와 양수가 만났을 때 서로의 자리를 바꿈
+        for (let i = 0; i < arr.length - 1; i++) {
+          for (let j = 0; j < arr.length - 1 - i; j++) {
+            if (arr[j] > 0 && arr[j + 1] < 0) {
+              [arr[j], arr[j + 1]] = [arr[j + 1], arr[j]];
+            }
+          }
         }
 
-        return negative.concat(positive);
+        return arr;
       }
 
       let arr = [1, 2, 3, -3, -2, 5, 6, -6];
