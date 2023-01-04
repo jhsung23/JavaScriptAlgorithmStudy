@@ -16,6 +16,15 @@
         }
 
         return target.join('') === need ? 'YES' : 'NO';
+
+        // queue를 사용한 풀이
+        // const queue = need.split('');
+
+        // for (let subject of plan) {
+        //   if (need.includes(subject) && subject !== queue.shift()) return 'NO';
+        // }
+
+        // return 'YES';
       }
 
       let a = 'CBA';
