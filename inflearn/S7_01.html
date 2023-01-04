@@ -20,9 +20,7 @@
             }
           }
 
-          const tmp = arr[i];
-          arr[i] = arr[minNumberIndex];
-          arr[minNumberIndex] = tmp;
+          [arr[i], arr[minNumberIndex]] = [arr[minNumberIndex], arr[i]];
         }
 
         return arr;
