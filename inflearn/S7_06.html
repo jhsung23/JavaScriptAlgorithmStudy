@@ -7,6 +7,10 @@
     <script>
       function solution(arr) {
         const before = [...arr];
+
+        // 메서드로 얕은 복사하기
+        // const before = arr.splice();
+
         arr.sort((a, b) => a - b);
 
         return before.reduce((acc, cur, idx) => {
