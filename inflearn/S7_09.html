@@ -1,0 +1,49 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(times) {
+        let answer = 0;
+
+        times.sort(([aStartTime, aEndTime], [bStartTime, bEndTime]) => {
+          if (aEndTime - aStartTime >= bEndTime - bStartTime) return -1;
+        });
+
+        times.forEach(([startTime, endTime], index) => {
+          let count = 1;
+
+          for (let i = index + 1; i < times.length; i++) {
+            let flag = false;
+
+            if (startTime <= times[i][0] && times[i][0] < endTime) {
+              startTime = times[i][0];
+              flag = true;
+            }
+            if (startTime < times[i][1] && times[i][1] <= endTime) {
+              endTime = times[i][1];
+              flag = true;
+            }
+
+            if (flag) count += 1;
+          }
+
+          answer = Math.max(answer, count);
+        });
+
+        return answer;
+      }
+
+      let arr = [
+        [14, 18],
+        [12, 15],
+        [15, 20],
+        [20, 30],
+        [5, 14],
+      ];
+      console.log(solution(arr));
+    </script>
+  </body>
+</html>
