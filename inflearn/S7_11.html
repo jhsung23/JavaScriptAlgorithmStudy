@@ -1,0 +1,45 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function getDvdCount(songs, minute) {
+        let count = 1,
+          minuteCount = 0;
+
+        for (const song of songs) {
+          if (minuteCount + song <= minute) {
+            minuteCount += song;
+          } else {
+            minuteCount = song;
+            count += 1;
+          }
+        }
+
+        return count;
+      }
+
+      function solution(m, songs) {
+        let min = Math.max(...songs),
+          max = songs.reduce((acc, cur) => acc + cur),
+          answer;
+
+        while (min <= max) {
+          let mid = parseInt((min + max) / 2);
+
+          if (getDvdCount(songs, mid) <= m) {
+            answer = mid;
+            max = mid - 1;
+          } else min = mid + 1;
+        }
+
+        return answer;
+      }
+
+      let arr = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+      console.log(solution(3, arr));
+    </script>
+  </body>
+</html>
