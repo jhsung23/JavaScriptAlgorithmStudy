@@ -6,32 +6,56 @@
   <body>
     <script>
       function solution(times) {
-        let answer = 0;
+        // let answer = 0;
 
-        times.sort(([aStartTime, aEndTime], [bStartTime, bEndTime]) => {
-          if (aEndTime - aStartTime >= bEndTime - bStartTime) return -1;
+        // times.sort(([aStartTime, aEndTime], [bStartTime, bEndTime]) => {
+        //   if (aEndTime - aStartTime >= bEndTime - bStartTime) return -1;
+        // });
+
+        // times.forEach(([startTime, endTime], index) => {
+        //   let count = 1;
+
+        //   for (let i = index + 1; i < times.length; i++) {
+        //     let flag = false;
+
+        //     if (startTime <= times[i][0] && times[i][0] < endTime) {
+        //       startTime = times[i][0];
+        //       flag = true;
+        //     }
+        //     if (startTime < times[i][1] && times[i][1] <= endTime) {
+        //       endTime = times[i][1];
+        //       flag = true;
+        //     }
+
+        //     if (flag) count += 1;
+        //   }
+
+        //   answer = Math.max(answer, count);
+        // });
+
+        // return answer;
+
+        // # 입퇴장 시간을 분리해 카운트하는 풀이
+        let answer = 0,
+          count = 0;
+        const timeLine = [];
+
+        for (const [startTime, endTime] of times) {
+          timeLine.push([startTime, 's']);
+          timeLine.push([endTime, 'e']);
+        }
+
+        timeLine.sort((a, b) => {
+          if (a[0] === b[0]) return a[1].charCodeAt() - b[1].charCodeAt();
+          else return a[0] - b[0];
         });
 
-        times.forEach(([startTime, endTime], index) => {
-          let count = 1;
+        for (const log of timeLine) {
+          if (log[1] === 's') count += 1;
+          else count -= 1;
 
-          for (let i = index + 1; i < times.length; i++) {
-            let flag = false;
-
-            if (startTime <= times[i][0] && times[i][0] < endTime) {
-              startTime = times[i][0];
-              flag = true;
-            }
-            if (startTime < times[i][1] && times[i][1] <= endTime) {
-              endTime = times[i][1];
-              flag = true;
-            }
-
-            if (flag) count += 1;
-          }
-
-          answer = Math.max(answer, count);
-        });
+          answer = Math.max(count, answer);
+        }
 
         return answer;
       }
