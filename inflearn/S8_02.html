@@ -1,0 +1,27 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function printBinary(n, answer) {
+        if (n / 2 === 0) return;
+        else {
+          printBinary(parseInt(n / 2), answer);
+          answer.push(n % 2);
+        }
+      }
+
+      function solution(n) {
+        const answer = [];
+
+        printBinary(n, answer);
+
+        return answer.join('');
+      }
+
+      console.log(solution(11));
+    </script>
+  </body>
+</html>
