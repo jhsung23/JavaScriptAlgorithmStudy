@@ -1,0 +1,42 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(m, arr) {
+        const answer = [];
+        const permutation = [];
+        const visited = Array.from({ length: arr.length }, () => false);
+
+        arr.sort();
+
+        function dfs(times) {
+          if (times === m) {
+            if (permutation.length !== m) return;
+            answer.push(permutation.join(' '));
+          } else {
+            for (let i = 0; i < arr.length; i++) {
+              if (!visited[i]) {
+                permutation.push(arr[i]);
+                visited[i] = true;
+                dfs(times + 1);
+                permutation.pop();
+                visited[i] = false;
+                dfs(times + 1);
+              }
+            }
+          }
+        }
+
+        dfs(0);
+
+        return answer;
+      }
+
+      let arr = [3, 6, 9];
+      console.log(solution(2, arr));
+    </script>
+  </body>
+</html>
