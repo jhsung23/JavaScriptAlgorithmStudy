@@ -1,0 +1,36 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(n, m) {
+        const answer = [];
+        const combination = [];
+        let countOfCase = 0;
+
+        function dfs(times) {
+          if (times === m) {
+            countOfCase += 1;
+            answer.push(combination.join(' '));
+          } else {
+            for (let i = 1; i <= n; i++) {
+              combination.push(i);
+              dfs(times + 1);
+              combination.pop();
+            }
+          }
+        }
+
+        dfs(0);
+
+        answer.push(countOfCase);
+
+        return answer;
+      }
+
+      console.log(solution(3, 2));
+    </script>
+  </body>
+</html>
