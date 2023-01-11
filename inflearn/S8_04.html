@@ -1,0 +1,33 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(n) {
+        const answer = [];
+        const subset = [];
+
+        function dfs(number) {
+          if (number > n) {
+            if (subset.length === 0) return; // 공집합 제외
+            answer.push(subset.join(' '));
+            return;
+          } else {
+            subset.push(number);
+            dfs(number + 1);
+            subset.pop();
+            dfs(number + 1);
+          }
+        }
+
+        dfs(1);
+
+        return answer;
+      }
+
+      console.log(solution(3));
+    </script>
+  </body>
+</html>
