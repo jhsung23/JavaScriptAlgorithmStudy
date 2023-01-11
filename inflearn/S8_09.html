@@ -1,0 +1,31 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(m, arr) {
+        let answer = Number.MAX_SAFE_INTEGER;
+
+        function dfs(count, price) {
+          if (price > m) return;
+          if (price === m) {
+            answer = Math.min(answer, count);
+          } else {
+            for (const coin of arr) {
+              dfs(count + 1, price + coin);
+            }
+          }
+        }
+
+        dfs(0, 0);
+
+        return answer;
+      }
+
+      let arr = [1, 2, 5];
+      console.log(solution(15, arr));
+    </script>
+  </body>
+</html>
