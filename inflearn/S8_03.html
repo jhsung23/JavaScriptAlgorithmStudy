@@ -1,0 +1,59 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(n) {
+        const answer = [];
+        const preOrder = [];
+        const inOrder = [];
+        const postOrder = [];
+
+        // # 전위 순회
+        function preOrderRecur(number) {
+          if (number > 7) return;
+          else {
+            preOrder.push(number);
+            preOrderRecur(number * 2);
+            preOrderRecur(number * 2 + 1);
+          }
+        }
+
+        preOrderRecur(n);
+        answer.push(preOrder);
+
+        // # 중위 순회
+        function inOrderRecur(number) {
+          if (number > 7) return;
+          else {
+            inOrderRecur(number * 2);
+            inOrder.push(number);
+            inOrderRecur(number * 2 + 1);
+          }
+        }
+
+        inOrderRecur(n);
+        answer.push(inOrder);
+
+        // # 후위 순회
+        function postOrderRecur(number) {
+          if (number > 7) return;
+          else {
+            postOrderRecur(number * 2);
+            postOrderRecur(number * 2 + 1);
+            postOrder.push(number);
+          }
+        }
+
+        postOrderRecur(n);
+        answer.push(postOrder);
+
+        return answer;
+      }
+
+      console.log(solution(1));
+    </script>
+  </body>
+</html>
