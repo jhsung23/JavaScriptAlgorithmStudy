@@ -1,0 +1,33 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(c, arr) {
+        let answer = 0;
+        let weightSum = 0;
+
+        function dfs(idx) {
+          if (weightSum > c) return;
+          if (idx === arr.length) {
+            answer = Math.max(answer, weightSum);
+          } else {
+            weightSum += arr[idx];
+            dfs(idx + 1);
+            weightSum -= arr[idx];
+            dfs(idx + 1);
+          }
+        }
+
+        dfs(0);
+
+        return answer;
+      }
+
+      let arr = [81, 58, 42, 33, 61];
+      console.log(solution(259, arr));
+    </script>
+  </body>
+</html>
