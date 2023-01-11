@@ -1,0 +1,36 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      /*
+       * @param {number} m - 제한시간
+       * @param {number[]} ps - 해당 문제의 점수
+       * @param {number[]} pt - 해당 문제를 푸는데 걸리는 시간
+       */
+      function solution(m, ps, pt) {
+        let answer = 0;
+
+        function dfs(idx, score, time) {
+          if (time > m) return;
+          if (idx === ps.length) {
+            answer = Math.max(answer, score);
+          } else {
+            dfs(idx + 1, score + ps[idx], time + pt[idx]);
+            dfs(idx + 1, score, time);
+          }
+        }
+
+        dfs(0, 0, 0);
+
+        return answer;
+      }
+
+      let ps = [10, 25, 15, 6, 7];
+      let pt = [5, 12, 8, 3, 4];
+      console.log(solution(20, ps, pt));
+    </script>
+  </body>
+</html>
