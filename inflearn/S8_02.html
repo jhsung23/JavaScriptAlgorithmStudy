@@ -5,20 +5,20 @@
   </head>
   <body>
     <script>
-      function printBinary(n, answer) {
+      let answer = '';
+
+      function makeBinary(n) {
         if (n / 2 === 0) return;
         else {
-          printBinary(parseInt(n / 2), answer);
-          answer.push(n % 2);
+          makeBinary(parseInt(n / 2));
+          answer += n % 2;
         }
       }
 
       function solution(n) {
-        const answer = [];
+        makeBinary(n);
 
-        printBinary(n, answer);
-
-        return answer.join('');
+        return answer;
       }
 
       console.log(solution(11));
