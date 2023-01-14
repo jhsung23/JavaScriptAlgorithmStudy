@@ -10,6 +10,7 @@
 
         function dfs(count, price) {
           if (price > m) return;
+          if (count >= answer) return;
           if (price === m) {
             answer = Math.min(answer, count);
           } else {
