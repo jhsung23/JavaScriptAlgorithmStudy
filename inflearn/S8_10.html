@@ -15,7 +15,7 @@
         function dfs(times) {
           if (times === m) {
             if (permutation.length !== m) return;
-            answer.push(permutation.join(' '));
+            answer.push(permutation.slice());
           } else {
             for (let i = 0; i < arr.length; i++) {
               if (!visited[i]) {
