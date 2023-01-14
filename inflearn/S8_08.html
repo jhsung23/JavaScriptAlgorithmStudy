@@ -13,7 +13,8 @@
         function dfs(times) {
           if (times === m) {
             countOfCase += 1;
-            answer.push(combination.join(' '));
+            answer.push(combination.slice());
+            // answer.push(combination.join(' '));
           } else {
             for (let i = 1; i <= n; i++) {
               combination.push(i);
