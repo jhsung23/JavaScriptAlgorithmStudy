@@ -1,0 +1,25 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(n, r) {
+        // # 2차원 배열 초기화
+        const memo = Array.from(Array(35), () => Array(35).fill(0));
+
+        function combinatnion(n, r) {
+          if (memo[n][r]) return memo[n][r];
+          if (n === r || r === 0) return 1;
+          else return (memo[n][r] = combinatnion(n - 1, r - 1) + combinatnion(n - 1, r));
+        }
+
+        return combinatnion(n, r);
+      }
+
+      console.log(solution(5, 3));
+      console.log(solution(33, 19));
+    </script>
+  </body>
+</html>
