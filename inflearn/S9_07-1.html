@@ -1,0 +1,62 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(board) {
+        let answer = 0;
+        const queue = [];
+        const visited = Array.from(Array(board.length), () => Array(board[0].length).fill(false));
+        const dx = [-1, 0, 1, 0];
+        const dy = [0, 1, 0, -1];
+
+        function notOutOfBoard(x, y) {
+          if (x >= 0 && x < board.length && y >= 0 && y < board[0].length) return true;
+          else return false;
+        }
+
+        function bfs() {
+          while (queue.length) {
+            const [curX, curY] = queue.shift();
+
+            for (let i = 0; i < 4; i++) {
+              const newX = curX + dx[i];
+              const newY = curY + dy[i];
+
+              if (notOutOfBoard(newX, newY) && board[newX][newY] && !visited[newX][newY]) {
+                visited[newX][newY] = true;
+                queue.push([newX, newY]);
+              }
+            }
+          }
+
+          answer += 1;
+        }
+
+        for (let i = 0; i < board.length; i++) {
+          for (let j = 0; j < board[i].length; j++) {
+            if (visited[i][j] || board[i][j] === 0) continue;
+            queue.push([i, j]);
+            bfs();
+          }
+        }
+
+        return answer;
+      }
+
+      let arr = [
+        [1, 1, 0, 0, 0, 1, 0],
+        [0, 1, 1, 0, 1, 1, 0],
+        [0, 1, 0, 0, 0, 0, 0],
+        [0, 0, 0, 1, 0, 1, 1],
+        [1, 1, 0, 1, 1, 0, 0],
+        [1, 0, 0, 0, 1, 0, 0],
+        [1, 0, 1, 0, 1, 0, 0],
+      ];
+
+      console.log(solution(arr));
+    </script>
+  </body>
+</html>
