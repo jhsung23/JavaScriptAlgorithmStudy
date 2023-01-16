@@ -1,0 +1,31 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(s, e) {
+        const queue = [];
+        const dist = Array(10001).fill(0);
+
+        queue.push(s);
+
+        while (queue.length) {
+          const cur = queue.shift();
+
+          if (cur === e) return dist[cur];
+
+          for (const next of [cur - 1, cur + 1, cur + 5]) {
+            if (next < 1 && next > 10000) continue;
+            dist[next] = dist[cur] + 1;
+            queue.push(next);
+          }
+        }
+      }
+
+      console.log(solution(5, 14));
+      console.log(solution(8, 3));
+    </script>
+  </body>
+</html>
