@@ -1,0 +1,33 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution() {
+        const answer = [];
+        const queue = [];
+
+        function bfs() {
+          while (queue.length !== 0) {
+            const current = queue.shift();
+            answer.push(current);
+
+            for (let togo of [current * 2, current * 2 + 1]) {
+              if (togo > 7) continue;
+              queue.push(togo);
+            }
+          }
+        }
+
+        queue.push(1);
+        bfs();
+
+        return answer;
+      }
+
+      console.log(solution());
+    </script>
+  </body>
+</html>
