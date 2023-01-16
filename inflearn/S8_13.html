@@ -6,11 +6,12 @@
   <body>
     <script>
       function solution(n, f) {
-        const answers = [];
+        const answer = [];
         const combiMemo = Array.from(Array(11), () => Array(11).fill(0));
         const coefficient = [];
         const visited = Array.from({ length: n }, () => false);
         const permutation = [];
+        let flag = false;
 
         function combination(n, r) {
           if (combiMemo[n][r]) return combiMemo[n][r];
@@ -19,6 +20,7 @@
         }
 
         function dfs(depth) {
+          if (flag) return;
           if (depth === n) {
             let sum = 0;
 
@@ -26,7 +28,10 @@
               sum += permutation[idx] * coefficient[idx];
             }
 
-            if (sum === f) answers.push(permutation.slice());
+            if (sum === f) {
+              answer.push(permutation.slice());
+              flag = true;
+            }
           } else {
             for (let i = 0; i < n; i++) {
               if (!visited[i]) {
@@ -46,7 +51,7 @@
 
         dfs(0);
 
-        return answers.sort()[0];
+        return answer[0];
       }
 
       console.log(solution(4, 16));
