@@ -1,0 +1,50 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(n, arr) {
+        let answer = 0;
+        const graph = Array.from(Array(n + 1), () => Array(n + 1).fill(0));
+        const visited = Array(n + 1).fill(false);
+
+        for (const [a, b] of arr) {
+          graph[a][b] = 1;
+        }
+
+        function dfs(node) {
+          if (node === n) answer += 1;
+          else {
+            for (let i = 1; i <= n; i++) {
+              if (graph[node][i] && !visited[i]) {
+                visited[i] = true;
+                dfs(i);
+                visited[i] = false;
+              }
+            }
+          }
+        }
+
+        visited[1] = true;
+        dfs(1);
+
+        return answer;
+      }
+
+      let arr = [
+        [1, 2],
+        [1, 3],
+        [1, 4],
+        [2, 1],
+        [2, 3],
+        [2, 5],
+        [3, 4],
+        [4, 2],
+        [4, 5],
+      ];
+      console.log(solution(5, arr));
+    </script>
+  </body>
+</html>
