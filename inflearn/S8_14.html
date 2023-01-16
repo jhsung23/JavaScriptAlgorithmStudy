@@ -1,0 +1,35 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(n, m) {
+        const answer = [];
+        const combi = [];
+        let count = 0;
+
+        function combination(depth, num) {
+          if (depth === m) {
+            answer.push(combi.slice());
+            count += 1;
+          } else {
+            for (let i = num; i <= n; i++) {
+              combi.push(i);
+              combination(depth + 1, i + 1);
+              combi.pop();
+            }
+          }
+        }
+
+        combination(0, 1);
+        answer.push(count);
+
+        return answer;
+      }
+
+      console.log(solution(4, 2));
+    </script>
+  </body>
+</html>
