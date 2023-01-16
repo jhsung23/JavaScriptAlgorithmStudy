@@ -1,0 +1,55 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(n, f) {
+        const answers = [];
+        const combiMemo = Array.from(Array(11), () => Array(11).fill(0));
+        const coefficient = [];
+        const visited = Array.from({ length: n }, () => false);
+        const permutation = [];
+
+        function combination(n, r) {
+          if (combiMemo[n][r]) return combiMemo[n][r];
+          if (n === r || r === 0) return 1;
+          else return (combiMemo[n][r] = combination(n - 1, r - 1) + combination(n - 1, r));
+        }
+
+        function dfs(depth) {
+          if (depth === n) {
+            let sum = 0;
+
+            for (const idx in permutation) {
+              sum += permutation[idx] * coefficient[idx];
+            }
+
+            if (sum === f) answers.push(permutation.slice());
+          } else {
+            for (let i = 0; i < n; i++) {
+              if (!visited[i]) {
+                permutation.push(i + 1);
+                visited[i] = true;
+                dfs(depth + 1);
+                permutation.pop();
+                visited[i] = false;
+              }
+            }
+          }
+        }
+
+        for (let i = 0; i <= n - 1; i++) {
+          coefficient.push(combination(n - 1, i));
+        }
+
+        dfs(0);
+
+        return answers.sort()[0];
+      }
+
+      console.log(solution(4, 16));
+    </script>
+  </body>
+</html>
