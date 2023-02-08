@@ -1,0 +1,26 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(m, coins) {
+        const dy = Array.from({ length: m + 1 }, () => Number.MAX_SAFE_INTEGER);
+        dy[0] = 0;
+
+        for (const coin of coins) {
+          for (let i = 1; i <= m; i++) {
+            if (i - coin < 0) continue;
+            dy[i] = Math.min(dy[i], dy[i - coin] + 1);
+          }
+        }
+
+        return dy[m];
+      }
+
+      let arr = [1, 2, 5];
+      console.log(solution(15, arr));
+    </script>
+  </body>
+</html>
